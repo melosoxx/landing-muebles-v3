@@ -46,7 +46,7 @@ export function SolutionSection() {
               <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl" />
               <div className="relative bg-card/10 backdrop-blur-sm rounded-2xl p-8 border border-secondary-foreground/10">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_k48l7hk48l7hk48l-8lPQt2cBDUaJKur0Pqb4ytiP98oNFj.png"
+                  src="/plano-solucion.png"
                   alt="Pack de planos profesionales"
                   className="w-full h-auto rounded-lg shadow-2xl"
                 />

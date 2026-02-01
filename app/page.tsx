@@ -1,6 +1,6 @@
 import { HeroSection } from "@/components/hero-section"
 import { SolutionSection } from "@/components/solution-section"
-import { BeforeAfterSection } from "@/components/before-after-section"
+import { PlansPreviewSection } from "@/components/plans-preview-section"
 import { ValueSection } from "@/components/value-section"
 import { ProofSection } from "@/components/proof-section"
 import { OfferSection } from "@/components/offer-section"
@@ -13,7 +13,7 @@ export default function Page() {
     <main className="min-h-screen">
       <HeroSection />
       <SolutionSection />
-      <BeforeAfterSection />
+      <PlansPreviewSection />
       <ValueSection />
       <ProofSection />
       <OfferSection />
