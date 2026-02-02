@@ -54,7 +54,7 @@ export function ValueSection() {
                 className="p-6 hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/50"
               >
                 <div className="flex items-start gap-3 mb-3">
-                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
                   <div>
                     <h3 className="text-lg font-bold mb-2">{category.title}</h3>
                     <p className="text-sm text-muted-foreground mb-3">{category.description}</p>

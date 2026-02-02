@@ -58,7 +58,7 @@ export function PlansPreviewSection() {
                 key={plan.id}
                 className="overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-lg group"
               >
-                <div className="relative aspect-[4/3] bg-white">
+                <div className="relative aspect-4/3 bg-white">
                   <Image
                     src={plan.imageSrc}
                     alt={`Plano de ${plan.title}`}

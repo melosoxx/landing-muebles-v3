@@ -55,19 +55,19 @@ export function OfferSection() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0" />
+                  <Check className="w-6 h-6 text-primary shrink-0" />
                   <span className="font-semibold">+300 planos profesionales de muebles industriales</span>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0" />
+                  <Check className="w-6 h-6 text-primary shrink-0" />
                   <span className="font-semibold">Medidas exactas y especificaciones técnicas completas</span>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0" />
+                  <Check className="w-6 h-6 text-primary shrink-0" />
                   <span className="font-semibold">Listas de materiales para cada proyecto</span>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0" />
+                  <Check className="w-6 h-6 text-primary shrink-0" />
                   <span className="font-semibold">Actualizaciones gratuitas de por vida</span>
                 </div>
               </div>
