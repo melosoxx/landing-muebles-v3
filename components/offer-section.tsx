@@ -83,7 +83,7 @@ export function OfferSection() {
               </div>
 
               <a
-                href="https://wwhustle.com/cart/51610450329883:1"
+                href="https://wwhustle.com/cart/51514040746267:1"
                 target="_blank"
                 rel="noopener noreferrer"
               >

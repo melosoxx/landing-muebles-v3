@@ -33,7 +33,7 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <a
-              href="https://wwhustle.com/cart/51610450329883:1"
+              href="https://wwhustle.com/cart/51514040746267:1"
               target="_blank"
               rel="noopener noreferrer"
             >
