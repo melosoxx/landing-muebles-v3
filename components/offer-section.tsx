@@ -1,8 +1,9 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "./checkout-link"
-import { Check, Clock, Download, RefreshCcw, Zap } from "lucide-react"
+import { Check, Clock, CreditCard, Download, RefreshCcw, Zap } from "lucide-react"
 
 const bonuses = [
   {
@@ -23,6 +24,37 @@ const bonuses = [
 ]
 
 export function OfferSection() {
+  const [viewers, setViewers] = useState(0)
+  const [spots, setSpots] = useState(0)
+
+  useEffect(() => {
+    // Inicializar viewers con número aleatorio 6-12
+    setViewers(Math.floor(Math.random() * 7) + 6)
+
+    // Fluctuar viewers cada 5-10 segundos
+    const viewerInterval = setInterval(() => {
+      setViewers(prev => {
+        const change = Math.floor(Math.random() * 5) - 2 // -2 a +2
+        const newValue = prev + change
+        return Math.max(4, Math.min(15, newValue)) // Mantener entre 4-15
+      })
+    }, Math.random() * 5000 + 5000) // 5-10 segundos
+
+    return () => clearInterval(viewerInterval)
+  }, [])
+
+  useEffect(() => {
+    // Inicializar spots con 3 o 4
+    setSpots(Math.random() > 0.5 ? 4 : 3)
+
+    // Bajar spots después de 30-60 segundos
+    const spotsTimeout = setTimeout(() => {
+      setSpots(prev => Math.max(1, prev - 1))
+    }, Math.random() * 30000 + 30000) // 30-60 segundos
+
+    return () => clearTimeout(spotsTimeout)
+  }, [])
+
   return (
     <section id="oferta" className="py-20 md:py-32 bg-secondary text-secondary-foreground relative overflow-hidden">
       {/* Background pattern */}
@@ -50,12 +82,6 @@ export function OfferSection() {
 
           <div className="bg-card text-card-foreground rounded-3xl shadow-2xl overflow-hidden border-4 border-primary">
             <div className="p-8 md:p-12">
-              <div className="text-center mb-8">
-                
-                
-                
-              </div>
-
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
                   <Check className="w-6 h-6 text-primary shrink-0" />
@@ -85,21 +111,58 @@ export function OfferSection() {
                 ))}
               </div>
 
-              <CheckoutLink>
-                <Button variant="default"
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light"
-                >
-                  DESCARGAR ACCESO INMEDIATO
-                </Button>
-              </CheckoutLink>
+              <div className="border border-border rounded-2xl p-6 bg-primary/5">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span>{viewers} personas viendo esta página</span>
+                  </div>
 
-              <p className="text-center text-sm text-muted-foreground mt-4">
-                Compra segura - Acceso de por vida
-              </p>
-              <p className="text-center text-xs text-muted-foreground mt-2">
-                Garantía de devolución de 7 días - Acceso instantáneo
-              </p>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                    <span>Quedan {spots} cupos promocionales</span>
+                  </div>
+                </div>
+
+                <div className="text-center mb-6">
+                  <p className="text-lg text-muted-foreground line-through">$32.500</p>
+                  <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
+                    $11.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                    <CreditCard className="w-4 h-4" />
+                    Hasta 3 cuotas sin interés
+                  </span>
+                </div>
+
+                <CheckoutLink>
+                  <Button variant="default"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light"
+                  >
+                    DESCARGAR ACCESO INMEDIATO
+                  </Button>
+                </CheckoutLink>
+
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  Compra segura - Acceso de por vida
+                </p>
+                <p className="text-center text-xs text-muted-foreground mt-2">
+                  Garantía de devolución de 7 días - Acceso instantáneo
+                </p>
+                <p className="text-center text-sm text-muted-foreground mt-3">
+                  También podés pagar por transferencia bancaria – entrega inmediata
+                </p>
+              </div>
             </div>
           </div>
         </div>
