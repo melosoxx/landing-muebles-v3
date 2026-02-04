@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { CheckoutLink } from "./checkout-link"
 import { ArrowRight, Clock } from "lucide-react"
 
 export function HeroSection() {
@@ -32,11 +33,7 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <a
-              href="https://wwhustle.com/cart/51514040746267:1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <CheckoutLink>
               <Button
                 size="lg"
                 className="px-12 py-8 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs"
@@ -44,7 +41,7 @@ export function HeroSection() {
                 DESCARGAR ACCESO INMEDIATO
                 <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
-            </a>
+            </CheckoutLink>
             <p className="text-xs text-secondary-foreground/60">Compra segura - Acceso de por vida</p>
           </div>
 

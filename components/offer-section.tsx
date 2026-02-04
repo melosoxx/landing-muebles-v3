@@ -1,4 +1,7 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
+import { CheckoutLink } from "./checkout-link"
 import { Check, Clock, Download, RefreshCcw, Zap } from "lucide-react"
 
 const bonuses = [
@@ -82,18 +85,14 @@ export function OfferSection() {
                 ))}
               </div>
 
-              <a
-                href="https://wwhustle.com/cart/51514040746267:1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <CheckoutLink>
                 <Button variant="default"
                   size="lg"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light"
                 >
                   DESCARGAR ACCESO INMEDIATO
                 </Button>
-              </a>
+              </CheckoutLink>
 
               <p className="text-center text-sm text-muted-foreground mt-4">
                 Compra segura - Acceso de por vida
