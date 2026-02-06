@@ -1,4 +1,6 @@
 import { CheckCircle2 } from "lucide-react"
+import { ScrollButton } from "./scroll-button"
+import { Button } from "@/components/ui/button"
 
 const benefits = [
   "Planos profesionales listos para fabricar",
@@ -10,8 +12,11 @@ const benefits = [
 
 export function SolutionSection() {
   return (
-    <section id="solucion" className="py-20 md:py-32 bg-secondary text-secondary-foreground">
-      <div className="container mx-auto px-4">
+    <section id="solucion" className="relative py-20 md:py-32 bg-secondary text-secondary-foreground overflow-hidden">
+      {/* Glow Effect Background */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-200 h-100 bg-primary/15 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-2 bg-primary/20 rounded-full mb-4">
@@ -24,6 +29,21 @@ export function SolutionSection() {
               Todo lo que necesitas para empezar a fabricar muebles de alta calidad y demanda comprobada.
               <span className="text-primary font-semibold"> Sin diseñar, sin adivinar, sin perder tiempo.</span>
             </p>
+          </div>
+
+          {/* CTA Button - Scroll to Plans */}
+          <div className="text-center mb-8">
+            <ScrollButton
+              targetId="planes"
+              trackingEventName="Ver Planos - Solution Section"
+            >
+              <Button
+                size="lg"
+                className="px-8 py-6 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse"
+              >
+                VER LOS PLANOS AHORA
+              </Button>
+            </ScrollButton>
           </div>
 
           {/* Imagen del plano - centrada y tamaño reducido */}
@@ -40,6 +60,25 @@ export function SolutionSection() {
                 <p className="text-xs">Planos Profesionales</p>
               </div>
             </div>
+          </div>
+
+          {/* CTA Link - Scroll to FAQ */}
+          <div className="text-center mt-8 mb-8">
+            <ScrollButton
+              targetId="faq-precios"
+              trackingEventName="Precios Venta - Solution Section"
+              className="group inline-flex items-center gap-2 text-base md:text-lg font-semibold text-primary hover:text-primary/80 transition-all duration-300 cursor-pointer border-b-2 border-primary/30 hover:border-primary pb-1"
+            >
+              <span>¿A cuánto se pueden vender los muebles?</span>
+              <svg
+                className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </ScrollButton>
           </div>
 
           {/* Lista de beneficios */}

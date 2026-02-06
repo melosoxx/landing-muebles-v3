@@ -1,3 +1,6 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const faqs = [
@@ -27,25 +30,41 @@ const faqs = [
       "Todos los planos están en formato PDF profesional, con medidas en centímetros, vistas múltiples, especificaciones técnicas detalladas y listas completas de materiales. Listos para imprimir o ver en pantalla.",
   },
   {
-    question: "¿Incluyen lista de materiales?",
-    answer:
-      "Sí, cada plano incluye una lista detallada de todos los materiales que necesitas: tipos de tubos, medidas de madera, herrajes, tornillos, etc. Así sabes exactamente qué comprar antes de empezar.",
-  },
-  {
     question: "¿Puedo vender los muebles que fabrique?",
     answer:
       "¡Por supuesto! Ese es precisamente el objetivo. Puedes fabricar y vender todos los muebles que quieras usando estos planos. Lo único que no puedes hacer es revender o compartir los planos mismos.",
   },
   {
-    question: "¿Cómo funciona la garantía de 7 días?",
+    question: "¿A cuánto se pueden vender los muebles?",
     answer:
-      "Simple: compras el pack, lo revisas durante 7 días, y si por cualquier razón no estás satisfecho, nos escribes y te devolvemos el 100% de tu dinero. Sin preguntas, sin complicaciones.",
+      "Los muebles industriales tienen excelente valor de mercado. Varían según su complejidad y tamaño, oscilando entre $80.000 y $150.000 ARS. Te invito a corroborarlo vos mismo en tu plataforma preferida buscando \"muebles industriales\".",
   },
 ]
 
 export function FAQSection() {
+  const [openItem, setOpenItem] = useState<string>("")
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (hash === "faq-precios") {
+        setOpenItem("item-6") // El índice de la pregunta de precios
+      }
+    }
+
+    // Detectar al cargar
+    handleHashChange()
+
+    // Escuchar cambios en el hash
+    window.addEventListener("hashchange", handleHashChange)
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+    }
+  }, [])
+
   return (
-    <section className="py-20 md:py-32 bg-muted/30">
+    <section id="faq" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -53,11 +72,12 @@ export function FAQSection() {
             <p className="text-xl text-muted-foreground">Resuelve todas tus dudas antes de comenzar</p>
           </div>
 
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-4" value={openItem} onValueChange={setOpenItem}>
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
+                id={index === 6 ? "faq-precios" : undefined}
                 className="bg-card border-2 border-border rounded-lg px-6"
               >
                 <AccordionTrigger className="text-left hover:no-underline py-6">
