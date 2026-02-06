@@ -8,6 +8,7 @@ import { GuaranteeSection } from "@/components/guarantee-section"
 import { FAQSection } from "@/components/faq-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { FloatingCTAButton } from "@/components/floating-cta-button"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
       <HeroSection />
       <FinalCTASection />
       <FloatingCTAButton />
+      <ScrollToTop />
     </main>
   )
 }
