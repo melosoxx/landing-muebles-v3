@@ -44,14 +44,14 @@ export function ProofSection() {
           <div className="text-center mb-12">
             <div className="inline-block px-4 py-2 bg-primary/20 rounded-full mb-4">
               <p className="text-sm font-semibold text-primary uppercase tracking-wide">
-                Testimonios Reales
+                Testimonios
               </p>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
               Lo que dicen nuestros clientes
             </h2>
             <p className="text-xl text-secondary-foreground/80 max-w-2xl mx-auto">
-              Mensajes reales de personas que ya están fabricando y vendiendo con nuestros planos
+              Que dicen los que ya están fabricando y vendiendo con nuestros planos
             </p>
           </div>
 
