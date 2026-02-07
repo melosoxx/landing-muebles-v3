@@ -131,9 +131,9 @@ export function OfferSection() {
                 </div>
 
                 <div className="text-center mb-6">
-                  <p className="text-lg text-muted-foreground line-through">$32.500</p>
+                  <p className="text-lg text-muted-foreground line-through">$22.500</p>
                   <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
-                    $11.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
+                    $5.999 <span className="text-lg text-muted-foreground font-normal">ARS</span>
                   </p>
                 </div>
 
