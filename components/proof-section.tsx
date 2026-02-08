@@ -7,6 +7,7 @@ import useEmblaCarousel from "embla-carousel-react"
 const testimonios = [
   { imagen: "/gallery/Testi 1.jpg", alt: "Testimonio cliente - rack TV" },
   { imagen: "/gallery/Testi 2.jpg", alt: "Testimonio cliente - vestidor" },
+  { imagen: "/gallery/Testi 3.png", alt: "Testimonio cliente - mueble industrial" },
   { imagen: "/gallery/Testi 4.jpg", alt: "Testimonio cliente - estructura" }
 ]
 
