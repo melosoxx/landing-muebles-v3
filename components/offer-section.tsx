@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "./checkout-link"
-import { Clock, CreditCard, Zap } from "lucide-react"
+import { CreditCard, Zap } from "lucide-react"
 
 const bonuses = [
   {
@@ -16,6 +16,7 @@ const bonuses = [
 export function OfferSection() {
   const [viewers, setViewers] = useState(0)
   const [spots, setSpots] = useState(0)
+  const [timeLeft, setTimeLeft] = useState(9 * 60 * 1000) // 9 minutos en ms
 
   useEffect(() => {
     // Inicializar viewers con número aleatorio 6-12
@@ -45,6 +46,16 @@ export function OfferSection() {
     return () => clearTimeout(spotsTimeout)
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => (prev > 0 ? prev - 1000 : 0))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const minutes = String(Math.floor(timeLeft / 60000)).padStart(2, "0")
+  const seconds = String(Math.floor((timeLeft % 60000) / 1000)).padStart(2, "0")
+
   return (
     <section id="oferta" className="py-20 md:py-32 bg-secondary text-secondary-foreground relative overflow-hidden">
       {/* Background pattern */}
@@ -61,9 +72,15 @@ export function OfferSection() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Comenzá sin riesgos hoy mismo</h2>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-destructive/20 rounded-full mb-6 animate-pulse">
-              <Clock className="w-4 h-4 text-destructive" />
-              <p className="text-sm font-semibold text-destructive">⚠️ Oferta válida solo por hoy: {new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}</p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-4">
+              <span className="text-sm font-semibold text-primary">🎁 Aprovechá la oferta y llevate el Master Melamina con +150 planos de regalo🎁</span>
+            </div>
+
+            <p className="text-sm text-muted-foreground mb-2">Tiempo restante</p>
+            <div className="flex items-center justify-center gap-1 font-mono text-3xl font-bold mb-6">
+              <span className="bg-destructive text-destructive-foreground px-3 py-2 rounded-md">{minutes}</span>
+              <span className="text-destructive">:</span>
+              <span className="bg-destructive text-destructive-foreground px-3 py-2 rounded-md">{seconds}</span>
             </div>
           </div>
 
@@ -97,7 +114,10 @@ export function OfferSection() {
                 </div>
 
                 <div className="text-center mb-6">
-                  <p className="text-lg text-muted-foreground line-through">$22.500</p>
+                  <div className="flex items-center justify-center gap-2">
+                    <p className="text-lg text-muted-foreground line-through">$22.500</p>
+                    <span className="px-2 py-0.5 bg-destructive text-destructive-foreground text-xs font-bold rounded-md">73% OFF</span>
+                  </div>
                   <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
                     $5.999 <span className="text-lg text-muted-foreground font-normal">ARS</span>
                   </p>
@@ -106,7 +126,7 @@ export function OfferSection() {
                 <div className="flex items-center justify-center gap-2 mb-6">
                   <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
                     <CreditCard className="w-4 h-4" />
-                    Hasta 3 cuotas sin interés
+                    Hasta 3 cuotas sin interés de $1.999
                   </span>
                 </div>
 
@@ -115,7 +135,7 @@ export function OfferSection() {
                     size="lg"
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light animate-[breathe_3s_ease-in-out_infinite]"
                   >
-                    DESCARGAR ACCESO INMEDIATO
+                    DESCARGA LOS PLANOS AHORA
                   </Button>
                 </CheckoutLink>
 
@@ -123,14 +143,17 @@ export function OfferSection() {
                   <img src="/Safepayment.png" alt="Métodos de pago seguros" className="h-28 object-contain" />
                 </div>
 
+                <div className="flex justify-center mt-3">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                    🏦 Transferencia bancaria ✅
+                  </span>
+                </div>
+
                 <p className="text-center text-sm text-muted-foreground mt-4">
                   Compra segura - Acceso de por vida
                 </p>
-                <p className="text-center text-xs text-muted-foreground mt-2">
-                  Garantía de devolución de 7 días - Acceso instantáneo
-                </p>
-                <p className="text-center text-sm text-muted-foreground mt-3">
-                  También podés pagar por transferencia bancaria – entrega inmediata
+                <p className="text-center text-xs text-green-500 font-medium mt-2">
+                  Garantía de devolución de 7 días
                 </p>
               </div>
             </div>
