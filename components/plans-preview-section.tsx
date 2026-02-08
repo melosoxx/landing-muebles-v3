@@ -1,44 +1,38 @@
-import Image from "next/image"
-import { Card } from "@/components/ui/card"
-import { Ruler, Wrench } from "lucide-react"
+"use client"
 
-const plansPreview = [
-  {
-    id: "rack-tv",
-    title: "Rack para TV",
-    dimensions: "120 x 40 x 42 cm",
-    material: "Metalón 20x20mm #1.25mm",
-    imageSrc: "/plans/rack-tv.png",
-  },
-  {
-    id: "mesa-desayunador",
-    title: "Mesa Desayunador con Estantes",
-    dimensions: "110 x 61 x 97 cm",
-    material: "Metalón 20x20mm #1.25mm",
-    imageSrc: "/plans/mesa-desayunador.png",
-  },
-  {
-    id: "mesa-alta-banquetas",
-    title: "Mesa Alta con 4 Banquetas",
-    dimensions: "100 x 60 x 87 cm",
-    material: "Metalón 30x30mm y 20x20mm",
-    imageSrc: "/plans/mesa-alta-banquetas.png",
-  },
-  {
-    id: "estante-malla",
-    title: "Estante con Malla Metálica",
-    dimensions: "75 x 27 x 78 cm",
-    material: "Metalón 20x20mm #1.25mm",
-    imageSrc: "/plans/estante-malla.png",
-  },
+import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
+
+const plans = [
+  { src: "/plans/rack-tv.png", alt: "Plano de Rack para TV" },
+  { src: "/plans/mesa-desayunador.png", alt: "Plano de Mesa Desayunador" },
+  { src: "/plans/mesa-alta-banquetas.png", alt: "Plano de Mesa Alta con Banquetas" },
+  { src: "/plans/estante-malla.png", alt: "Plano de Estante con Malla Metálica" },
 ]
 
 export function PlansPreviewSection() {
+  const [current, setCurrent] = useState(0)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const startTimer = () => {
+      timeoutRef.current = setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % plans.length)
+      }, 2000)
+    }
+
+    startTimer()
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [current])
+
   return (
     <section id="planes" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
             <div className="inline-block px-4 py-2 bg-primary/20 rounded-full mb-4">
               <p className="text-sm font-semibold text-primary uppercase tracking-wide">
                 Mirá lo que recibís
@@ -52,38 +46,43 @@ export function PlansPreviewSection() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {plansPreview.map((plan) => (
-              <Card
-                key={plan.id}
-                className="overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-lg group"
-              >
-                <div className="relative aspect-4/3 bg-white">
+          <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg border-2 border-border">
+            <div className="relative aspect-4/3">
+              {plans.map((plan, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    index === current ? "opacity-100" : "opacity-0"
+                  }`}
+                >
                   <Image
-                    src={plan.imageSrc}
-                    alt={`Plano de ${plan.title}`}
+                    src={plan.src}
+                    alt={plan.alt}
                     fill
-                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain p-4"
                   />
                 </div>
-                <div className="p-4 bg-card">
-                  <h3 className="font-bold text-lg mb-2">{plan.title}</h3>
-                  <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Ruler className="w-4 h-4 text-primary" />
-                      <span>{plan.dimensions}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Wrench className="w-4 h-4 text-primary" />
-                      <span>{plan.material}</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {plans.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrent(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === current
+                    ? "bg-primary scale-110"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                aria-label={`Ver plano ${index + 1}`}
+              />
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8">
             <p className="text-muted-foreground">
               Y más de <span className="font-bold text-primary">+300 diseños</span> esperándote
             </p>

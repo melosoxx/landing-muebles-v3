@@ -1,6 +1,17 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
 import { CheckCircle2 } from "lucide-react"
 import { ScrollButton } from "./scroll-button"
 import { Button } from "@/components/ui/button"
+
+const carouselImages = [
+  { src: "/plano-solucion.png", alt: "Pack de planos profesionales" },
+  { src: "/plans/rack-tv.png", alt: "Plano de Rack para TV" },
+  { src: "/plans/mesa-desayunador.png", alt: "Plano de Mesa Desayunador" },
+  { src: "/plans/mesa-alta-banquetas.png", alt: "Plano de Mesa Alta con Banquetas" },
+  { src: "/plans/estante-malla.png", alt: "Plano de Estante con Malla Metálica" },
+]
 
 const benefits = [
   "Planos profesionales listos para fabricar",
@@ -11,6 +22,19 @@ const benefits = [
 ]
 
 export function SolutionSection() {
+  const [current, setCurrent] = useState(0)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % carouselImages.length)
+    }, 2000)
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [current])
+
   return (
     <section id="solucion" className="relative py-20 md:py-32 bg-secondary text-secondary-foreground overflow-hidden">
       {/* Glow Effect Background */}
@@ -34,7 +58,7 @@ export function SolutionSection() {
           {/* CTA Button - Scroll to Plans */}
           <div className="text-center mb-8">
             <ScrollButton
-              targetId="planes"
+              targetId="oferta"
               trackingEventName="Ver Planos - Solution Section"
             >
               <Button
@@ -46,15 +70,22 @@ export function SolutionSection() {
             </ScrollButton>
           </div>
 
-          {/* Imagen del plano - centrada y tamaño reducido */}
+          {/* Carrusel de planos - centrado y tamaño reducido */}
           <div className="relative max-w-md mx-auto mb-10">
             <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl" />
             <div className="relative bg-card/10 backdrop-blur-sm rounded-2xl p-6 border border-secondary-foreground/10">
-              <img
-                src="/plano-solucion.png"
-                alt="Pack de planos profesionales"
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
+              <div className="relative aspect-square overflow-hidden rounded-lg">
+                {carouselImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out ${
+                      index === current ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                ))}
+              </div>
               <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-xl">
                 <p className="text-2xl font-bold">+300</p>
                 <p className="text-xs">Planos Profesionales</p>

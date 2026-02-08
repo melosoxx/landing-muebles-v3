@@ -133,64 +133,121 @@
   display: none;
 }
 
-/* Botón flotante estilo Uiverse */
-.floating-cta-wrapper {
-  height: 45px;
-  border-radius: 20px;
-  padding: 5px;
+/* Botón flotante estilo Uiverse - Download */
+.floating-download-btn {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  background-color: #292524;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid #17795E;
+  background-color: #209978;
+  overflow: hidden;
+}
+
+.floating-download-btn,
+.floating-download-btn .button__icon,
+.floating-download-btn .button__text {
   transition: all 0.3s;
 }
 
-.floating-cta-text {
-  padding: 0 15px;
-  color: white;
-  font-size: 1em;
-  font-weight: 500;
+.floating-download-btn .button__text {
+  transform: translateX(22px);
+  color: #fff;
+  font-weight: 600;
 }
 
-.floating-cta-btn {
+.floating-download-btn .button__icon {
+  position: absolute;
+  transform: translateX(109px);
   height: 100%;
-  padding: 0 20px;
-  border-radius: 15px;
-  color: #1a1a1a;
-  background-color: rgb(192, 255, 20);
-  font-weight: 600;
+  width: 39px;
+  background-color: #17795E;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
-  animation: glow-pulse 2s ease-in-out infinite;
 }
 
-.floating-cta-btn:hover {
-  animation: jello-vertical 0.9s both, glow-pulse 2s ease-in-out infinite;
+.floating-download-btn .button__icon svg {
+  width: 20px;
+  fill: #fff;
 }
 
-.floating-cta-wrapper:active {
-  transform: scale(0.95);
+.floating-download-btn:hover {
+  background: #17795E;
 }
 
-@keyframes glow-pulse {
+.floating-download-btn:hover .button__text {
+  color: transparent;
+}
+
+.floating-download-btn:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.floating-download-btn:active .button__icon {
+  background-color: #146c54;
+}
+
+.floating-download-btn:active {
+  border: 1px solid #146c54;
+}
+
+/* Borde animado verde para card de acceso inmediato */
+.border-glow-card {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #d1d5db;
+  background: var(--card);
+}
+
+.border-glow-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 60%,
+    #22c55e 75%,
+    #4ade80 85%,
+    transparent 100%
+  );
+  animation: borderRotate 2s linear infinite;
+  transform-origin: center;
+  translate: -50% -50%;
+  z-index: 0;
+}
+
+.border-glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 6px;
+  background: var(--card);
+  z-index: 1;
+}
+
+.border-glow-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes borderRotate {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
+}
+
+@keyframes breathe {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(192, 255, 20, 0.4),
-                0 0 20px rgba(192, 255, 20, 0.2);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
   }
   50% {
-    box-shadow: 0 0 15px rgba(192, 255, 20, 0.5),
-                0 0 30px rgba(192, 255, 20, 0.3);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.2);
   }
-}
-
-@keyframes jello-vertical {
-  0% { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(0.75, 1.25, 1); }
-  40% { transform: scale3d(1.25, 0.75, 1); }
-  50% { transform: scale3d(0.85, 1.15, 1); }
-  65% { transform: scale3d(1.05, 0.95, 1); }
-  75% { transform: scale3d(0.95, 1.05, 1); }
-  100% { transform: scale3d(1, 1, 1); }
 }

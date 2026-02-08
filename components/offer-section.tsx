@@ -3,23 +3,13 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "./checkout-link"
-import { Check, Clock, CreditCard, Download, RefreshCcw, Zap } from "lucide-react"
+import { Clock, CreditCard, Zap } from "lucide-react"
 
 const bonuses = [
   {
     icon: Zap,
     title: "Acceso inmediato",
     description: "Descarga todos los planos en menos de 2 minutos",
-  },
-  {
-    icon: RefreshCcw,
-    title: "Actualizaciones gratis",
-    description: "Nuevos planos y diseños agregados mensualmente",
-  },
-  {
-    icon: Download,
-    title: "Formatos múltiples",
-    description: "PDF de alta calidad, listo para imprimir o ver en tablet",
   },
 ]
 
@@ -70,48 +60,24 @@ export function OfferSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Comenzá sin riesgos hoy mismo</h2>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-destructive/20 rounded-full mb-6 animate-pulse">
               <Clock className="w-4 h-4 text-destructive" />
-              <p className="text-sm font-semibold text-destructive">⚠️ Oferta por tiempo limitado</p>
+              <p className="text-sm font-semibold text-destructive">⚠️ Oferta válida solo por hoy: {new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}</p>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Comenzá sin riesgos hoy mismo</h2>
-            <p className="text-xl md:text-2xl text-secondary-foreground/80 max-w-3xl mx-auto">
-              Probá el pack completo durante 7 días. Si no es lo que esperabas, te devolvemos tu dinero sin preguntas.
-            </p>
           </div>
 
           <div className="bg-card text-card-foreground rounded-3xl shadow-2xl overflow-hidden border-4 border-primary">
             <div className="p-8 md:p-12">
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary shrink-0" />
-                  <span className="font-semibold">+300 planos profesionales de muebles industriales</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary shrink-0" />
-                  <span className="font-semibold">Medidas exactas y especificaciones técnicas completas</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary shrink-0" />
-                  <span className="font-semibold">Listas de materiales para cada proyecto</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
-                  <Check className="w-6 h-6 text-primary shrink-0" />
-                  <span className="font-semibold">Actualizaciones gratuitas de por vida</span>
+              <div className="flex justify-center mb-8">
+                <div className="border-glow-card relative text-center p-5 rounded-lg">
+                  <Zap className="w-8 h-8 text-primary mx-auto mb-2 relative z-10" />
+                  <p className="font-semibold text-sm mb-1 relative z-10">Acceso inmediato</p>
+                  <p className="text-xs text-muted-foreground relative z-10">Descarga todos los planos en menos de 2 minutos</p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
-                {bonuses.map((bonus, index) => (
-                  <div key={index} className="text-center p-4 border border-border rounded-lg">
-                    <bonus.icon className="w-8 h-8 text-primary mx-auto mb-2" />
-                    <p className="font-semibold text-sm mb-1">{bonus.title}</p>
-                    <p className="text-xs text-muted-foreground">{bonus.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="border border-border rounded-2xl p-6 bg-primary/5">
+              <div className="border-glow-card rounded-2xl p-6">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="relative flex h-3 w-3">
@@ -147,11 +113,15 @@ export function OfferSection() {
                 <CheckoutLink>
                   <Button variant="default"
                     size="lg"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light animate-[breathe_3s_ease-in-out_infinite]"
                   >
                     DESCARGAR ACCESO INMEDIATO
                   </Button>
                 </CheckoutLink>
+
+                <div className="flex justify-center mt-4">
+                  <img src="/Safepayment.png" alt="Métodos de pago seguros" className="h-28 object-contain" />
+                </div>
 
                 <p className="text-center text-sm text-muted-foreground mt-4">
                   Compra segura - Acceso de por vida
