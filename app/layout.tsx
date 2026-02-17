@@ -7,15 +7,11 @@ import Script from "next/script"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Pack de +300 Planos Profesionales de Muebles Industriales | Fabricá y Vendé",
-  description:
-    "Descargá más de 300 planos técnicos profesionales para fabricar muebles industriales de alta demanda. Medidas exactas, especificaciones completas y listas de materiales. Empezá tu negocio hoy.",
-  keywords: "planos herrería, planos muebles industriales, planos carpintería, diseños muebles metal, negocio herrería",
-  openGraph: {
-    title: "Pack de +300 Planos Profesionales de Muebles Industriales",
-    description: "Fabricá y vendé muebles industriales de alta calidad con planos profesionales listos para usar.",
-    type: "website",
+  title: {
+    default: "Planos Profesionales de Muebles | Fabricá y Vendé",
+    template: "%s | Planos de Muebles",
   },
+  description: "Planos profesionales para fabricar muebles de alta calidad. Industriales y Melamina.",
 }
 
 export default function RootLayout({

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { CheckCircle2 } from "lucide-react"
-import { ScrollButton } from "./scroll-button"
+import { ScrollButton } from "@/components/scroll-button"
 import { Button } from "@/components/ui/button"
 
 const carouselImages = [
@@ -47,11 +47,13 @@ export function SolutionSection() {
               <p className="text-sm font-semibold text-primary">LA SOLUCIÓN</p>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Más de 300 planos profesionales de muebles industriales
+              +300 Planos Profesionales <br /><span className="text-green-500">Muebles Industriales</span>
             </h2>
             <p className="text-xl text-secondary-foreground/80 leading-relaxed">
-              Todo lo que necesitas para empezar a fabricar muebles de alta calidad y demanda comprobada.
-              <span className="text-primary font-semibold"> Sin diseñar, sin adivinar, sin perder tiempo.</span>
+              Todo lo que necesitas para empezar
+            </p>
+            <p className="text-xl text-primary font-semibold leading-relaxed">
+              Sin diseñar, sin adivinar, sin perder tiempo.
             </p>
           </div>
 

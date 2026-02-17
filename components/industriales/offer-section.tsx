@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { CheckoutLink } from "./checkout-link"
+import { CheckoutLink } from "@/components/checkout-link"
 import { CreditCard, Zap } from "lucide-react"
 
 const bonuses = [
@@ -73,7 +73,10 @@ export function OfferSection() {
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Comenzá sin riesgos hoy mismo</h2>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-4">
-              <span className="text-sm font-semibold text-primary">🎁 Aprovechá la oferta y llevate el Master Melamina con +150 planos de regalo🎁</span>
+              <span className="text-sm font-semibold text-primary flex flex-col items-center">
+                <span>🎁 BONUS DE REGALO 🎁</span>
+                <span>Master Melamina con +150 planos de regalo</span>
+              </span>
             </div>
 
             <p className="text-sm text-muted-foreground mb-2">Tiempo restante</p>
@@ -115,18 +118,18 @@ export function OfferSection() {
 
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center gap-2">
-                    <p className="text-lg text-muted-foreground line-through">$22.500</p>
+                    <p className="text-lg text-muted-foreground line-through">$42.600</p>
                     <span className="px-2 py-0.5 bg-destructive text-destructive-foreground text-xs font-bold rounded-md">73% OFF</span>
                   </div>
                   <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
-                    $5.999 <span className="text-lg text-muted-foreground font-normal">ARS</span>
+                    $11.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
                   </p>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 mb-6">
                   <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
                     <CreditCard className="w-4 h-4" />
-                    Hasta 3 cuotas sin interés de $1.999
+                    Hasta 3 cuotas sin interés de $3.799
                   </span>
                 </div>
 
@@ -145,7 +148,7 @@ export function OfferSection() {
 
                 <div className="flex justify-center mt-3">
                   <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    🏦 Transferencia bancaria ✅
+                    🏦 Transferencia bancaria
                   </span>
                 </div>
 

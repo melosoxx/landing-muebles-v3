@@ -1,8 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { CheckoutLink } from "./checkout-link"
+import { CheckoutLink } from "@/components/checkout-link"
 import { ArrowRight, Clock } from "lucide-react"
+
+const MELAMINA_CHECKOUT_URL = "https://wwhustle.com/cart/51797803401499:1"
 
 export function HeroSection() {
   return (
@@ -25,15 +27,15 @@ export function HeroSection() {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">
-            Comenzá tu negocio de muebles industriales hoy
+            Comenzá tu negocio de muebles de melamina hoy
           </h1>
 
           <p className="text-xl md:text-2xl text-secondary-foreground/80 text-balance max-w-2xl mx-auto leading-relaxed">
-            Descargá el pack completo de más de 300 planos profesionales y empezá a fabricar muebles de alta calidad que el mercado está esperando
+            Descargá el pack completo de más de 150 planos profesionales y empezá a fabricar muebles de melamina de alta calidad que el mercado está esperando
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <CheckoutLink>
+            <CheckoutLink checkoutUrl={MELAMINA_CHECKOUT_URL}>
               <Button
                 size="lg"
                 className="px-12 py-8 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs"
