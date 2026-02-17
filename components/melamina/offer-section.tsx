@@ -113,14 +113,14 @@ export function OfferSection() {
                     <span className="px-2 py-0.5 bg-destructive text-destructive-foreground text-xs font-bold rounded-md">73% OFF</span>
                   </div>
                   <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
-                    $5.999 <span className="text-lg text-muted-foreground font-normal">ARS</span>
+                    $7.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
                   </p>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 mb-6">
                   <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
                     <CreditCard className="w-4 h-4" />
-                    Hasta 3 cuotas sin interés de $1.999
+                    Hasta 3 cuotas sin interés de $2.499
                   </span>
                 </div>
 
