@@ -61,21 +61,6 @@ export function SolutionSection() {
             </p>
           </div>
 
-          {/* CTA Button - Scroll to Plans */}
-          <div className="text-center mb-8">
-            <ScrollButton
-              targetId="oferta"
-              trackingEventName="Ver Planos - Solution Section"
-            >
-              <Button
-                size="lg"
-                className="px-8 py-6 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse"
-              >
-                VER LOS PLANOS AHORA
-              </Button>
-            </ScrollButton>
-          </div>
-
           {/* Imagen del pack */}
           <div className="relative max-w-sm mx-auto mb-10">
             <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl" />
@@ -99,7 +84,20 @@ export function SolutionSection() {
             </div>
           </div>
 
-
+          {/* CTA Button - Scroll to Plans */}
+          <div className="text-center mb-8">
+            <ScrollButton
+              targetId="oferta"
+              trackingEventName="Ver Planos - Solution Section"
+            >
+              <Button
+                size="lg"
+                className="px-8 py-6 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse"
+              >
+                VER LOS PLANOS AHORA
+              </Button>
+            </ScrollButton>
+          </div>
 
           {/* Lista de beneficios */}
           <ul className="space-y-4 max-w-2xl mx-auto mb-8">
