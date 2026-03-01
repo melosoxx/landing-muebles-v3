@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "@/components/checkout-link"
 import { ArrowRight, Clock } from "lucide-react"
 
-const MELAMINA_CHECKOUT_URL = "https://wwhustle.com/cart/51797803401499:1"
+const MELAMINA_CHECKOUT_URL = "https://mueblesfactory.myshopify.com/cart/45673813180602:1"
 
 export function HeroSection() {
   return (

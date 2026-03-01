@@ -51,9 +51,6 @@ export function ProofSection() {
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
               Lo que dicen nuestros clientes
             </h2>
-            <p className="text-xl text-secondary-foreground/80 max-w-2xl mx-auto">
-              Que dicen los que ya están fabricando y vendiendo con nuestros planos
-            </p>
           </div>
 
           {/* Carrusel con embla */}

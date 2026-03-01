@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "@/components/checkout-link"
 import { CreditCard } from "lucide-react"
 
-const MELAMINA_CHECKOUT_URL = "https://wwhustle.com/cart/51797803401499:1"
+const MELAMINA_CHECKOUT_URL = "https://mueblesfactory.myshopify.com/cart/45673813180602:1"
 
 const valueItems = [
   { icon: "📦", title: "+150 Planos listos para fabricar", price: "$10.000" },
