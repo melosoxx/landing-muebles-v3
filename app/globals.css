@@ -141,8 +141,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid #17795E;
-  background-color: #209978;
+  border: 1px solid #a3e635;
+  background-color: #84cc16;
   overflow: hidden;
 }
 
@@ -163,7 +163,7 @@
   transform: translateX(109px);
   height: 100%;
   width: 39px;
-  background-color: #17795E;
+  background-color: #65a30d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +175,7 @@
 }
 
 .floating-download-btn:hover {
-  background: #17795E;
+  background: #65a30d;
 }
 
 .floating-download-btn:hover .button__text {
@@ -188,11 +188,11 @@
 }
 
 .floating-download-btn:active .button__icon {
-  background-color: #146c54;
+  background-color: #4d7c0f;
 }
 
 .floating-download-btn:active {
-  border: 1px solid #146c54;
+  border: 1px solid #4d7c0f;
 }
 
 /* Borde animado verde para card de acceso inmediato */

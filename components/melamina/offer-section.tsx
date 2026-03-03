@@ -10,8 +10,8 @@ const MELAMINA_CHECKOUT_URL = "https://mueblesfactory.myshopify.com/cart/4567381
 const valueItems = [
   { icon: "📦", title: "+150 Planos listos para fabricar", price: "$10.000" },
   { icon: "📐", title: "Guía de cortes y optimización de material", price: "$8.000" },
-  { icon: "📋", title: "Pack de Planos para Amoblamiento Doméstico", price: "$7.000" },
-  { icon: "🔧", title: "Manual de herramientas y técnicas profesionales", price: "$5.000" },
+  { icon: "📋", title: "BONUS PACK: Planos para Amoblamiento Doméstico", price: "$7.000" },
+  { icon: "🔧", title: "Manual de herramientas y técnicas", price: "$5.000" },
 ]
 
 export function OfferSection() {

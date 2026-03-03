@@ -56,15 +56,26 @@ export function SolutionSection() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
               +150 Planos Profesionales <span className="text-green-500">Muebles hechos en Melamina</span>
             </h2>
-            <p className="text-xl text-secondary-foreground/80 leading-relaxed">
-              Todo lo que necesitas para empezar a fabricar muebles con presición.
-            </p>
+            <div className="inline-flex flex-col items-start gap-3 text-base text-white mx-auto" style={{ textShadow: "0 0 8px rgba(34,197,94,0.6)" }}>
+              <span className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border-2 border-green-500 text-white text-xs font-bold shrink-0 shadow-[0_0_8px_rgba(34,197,94,0.6)]">1</span>
+                Mandás a cortar
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border-2 border-green-500 text-white text-xs font-bold shrink-0 shadow-[0_0_8px_rgba(34,197,94,0.6)]">2</span>
+                Unis las partes
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border-2 border-green-500 text-white text-xs font-bold shrink-0 shadow-[0_0_8px_rgba(34,197,94,0.6)]">3</span>
+                Publicas y vendes
+              </span>
+            </div>
           </div>
 
           {/* Imagen del pack */}
-          <div className="relative max-w-sm mx-auto mb-10">
+          <div className="relative max-w-[30rem] mx-auto mb-10">
             <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl" />
-            <div className="relative bg-card/5 backdrop-blur-[2px] rounded-2xl p-6 border-none">
+            <div className="relative bg-card/5 backdrop-blur-[2px] rounded-2xl px-0 py-6 border-none shadow-[0_25px_60px_-10px_rgba(0,0,0,0.5),0_10px_20px_-5px_rgba(0,0,0,0.3)]">
               <div className="relative aspect-square overflow-hidden rounded-2xl">
                 {carouselImages.map((image, index) => (
                   <img
@@ -76,10 +87,6 @@ export function SolutionSection() {
                     }`}
                   />
                 ))}
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-xl">
-                <p className="text-2xl font-bold">+150</p>
-                <p className="text-xs">Planos Profesionales</p>
               </div>
             </div>
           </div>
@@ -102,8 +109,8 @@ export function SolutionSection() {
           {/* Lista de beneficios */}
           <ul className="space-y-4 max-w-2xl mx-auto mb-8">
             {benefits.map((benefit, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
+              <li key={index} className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
                 <span className="text-sm">{benefit}</span>
               </li>
             ))}
