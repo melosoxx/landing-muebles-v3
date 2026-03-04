@@ -3,47 +3,31 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "@/components/checkout-link"
-import { CreditCard, Zap } from "lucide-react"
+import { CreditCard } from "lucide-react"
 
-const bonuses = [
-  {
-    icon: Zap,
-    title: "Acceso inmediato",
-    description: "Descarga todos los planos en menos de 2 minutos",
-  },
+const valueItems = [
+  { icon: "📦", title: "+300 Planos de Muebles Industriales", price: "$15.000" },
+  { icon: "📐", title: "Guía de soldadura y técnicas profesionales", price: "$8.000" },
+  { icon: "📋", title: "BONUS PACK: Master Melamina (+150 planos)", price: "$9.500" },
+  { icon: "🔧", title: "Manual de herramientas y materiales", price: "$5.000" },
 ]
 
 export function OfferSection() {
   const [viewers, setViewers] = useState(0)
-  const [spots, setSpots] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(9 * 60 * 1000) // 9 minutos en ms
+  const [timeLeft, setTimeLeft] = useState(9 * 60 * 1000)
 
   useEffect(() => {
-    // Inicializar viewers con número aleatorio 6-12
     setViewers(Math.floor(Math.random() * 7) + 6)
 
-    // Fluctuar viewers cada 5-10 segundos
     const viewerInterval = setInterval(() => {
       setViewers(prev => {
-        const change = Math.floor(Math.random() * 5) - 2 // -2 a +2
+        const change = Math.floor(Math.random() * 5) - 2
         const newValue = prev + change
-        return Math.max(4, Math.min(15, newValue)) // Mantener entre 4-15
+        return Math.max(4, Math.min(15, newValue))
       })
-    }, Math.random() * 5000 + 5000) // 5-10 segundos
+    }, Math.random() * 5000 + 5000)
 
     return () => clearInterval(viewerInterval)
-  }, [])
-
-  useEffect(() => {
-    // Inicializar spots con 3 o 4
-    setSpots(Math.random() > 0.5 ? 4 : 3)
-
-    // Bajar spots después de 30-60 segundos
-    const spotsTimeout = setTimeout(() => {
-      setSpots(prev => Math.max(1, prev - 1))
-    }, Math.random() * 30000 + 30000) // 30-60 segundos
-
-    return () => clearTimeout(spotsTimeout)
   }, [])
 
   useEffect(() => {
@@ -57,7 +41,9 @@ export function OfferSection() {
   const seconds = String(Math.floor((timeLeft % 60000) / 1000)).padStart(2, "0")
 
   return (
-    <section id="oferta" className="py-20 md:py-32 bg-secondary text-secondary-foreground relative overflow-hidden">
+    <section id="oferta" className="py-12 md:py-20 bg-secondary text-secondary-foreground relative overflow-hidden">
+      {/* Top Fade from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-[1]" />
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -69,97 +55,117 @@ export function OfferSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Comenzá sin riesgos hoy mismo</h2>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-4">
-              <span className="text-sm font-semibold text-primary flex flex-col items-center">
-                <span>🎁 BONUS DE REGALO 🎁</span>
-                <span>Master Melamina con +150 planos de regalo</span>
-              </span>
-            </div>
+        <div className="max-w-lg mx-auto">
 
-            <p className="text-sm text-muted-foreground mb-2">Tiempo restante</p>
-            <div className="flex items-center justify-center gap-1 font-mono text-3xl font-bold mb-6">
-              <span className="bg-destructive text-destructive-foreground px-3 py-2 rounded-md">{minutes}</span>
-              <span className="text-destructive">:</span>
-              <span className="bg-destructive text-destructive-foreground px-3 py-2 rounded-md">{seconds}</span>
+          {/* Heading */}
+          <h2 className="text-center text-xl md:text-2xl font-extrabold text-primary tracking-wide mb-4">
+            ESTA OFERTA EXPIRA EN
+          </h2>
+
+          {/* Countdown timer */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="flex flex-col items-center">
+              <div className="bg-secondary border-2 border-primary/70 rounded-lg px-5 py-3 min-w-[72px] text-center">
+                <span className="text-3xl md:text-4xl font-bold font-mono text-primary">{minutes}</span>
+              </div>
+              <span className="text-[10px] text-primary/70 font-semibold mt-1 tracking-widest">MIN</span>
+            </div>
+            <span className="text-3xl md:text-4xl font-bold text-primary -mt-4">:</span>
+            <div className="flex flex-col items-center">
+              <div className="bg-secondary border-2 border-primary/70 rounded-lg px-5 py-3 min-w-[72px] text-center">
+                <span className="text-3xl md:text-4xl font-bold font-mono text-primary">{seconds}</span>
+              </div>
+              <span className="text-[10px] text-primary/70 font-semibold mt-1 tracking-widest">SEG</span>
             </div>
           </div>
 
-          <div className="bg-card text-card-foreground rounded-3xl shadow-2xl overflow-hidden border-4 border-primary">
-            <div className="p-8 md:p-12">
-              <div className="flex justify-center mb-8">
-                <div className="border-glow-card relative text-center p-5 rounded-lg">
-                  <Zap className="w-8 h-8 text-primary mx-auto mb-2 relative z-10" />
-                  <p className="font-semibold text-sm mb-1 relative z-10">Acceso inmediato</p>
-                  <p className="text-xs text-muted-foreground relative z-10">Descarga todos los planos en menos de 2 minutos</p>
-                </div>
-              </div>
+          {/* Main card */}
+          <div className="border-glow-card bg-card text-card-foreground rounded-2xl p-5 md:p-8">
 
-              <div className="border-glow-card rounded-2xl p-6">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                    <span>{viewers} personas viendo esta página</span>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                    </span>
-                    <span>Quedan {spots} cupos promocionales</span>
-                  </div>
-                </div>
-
-                <div className="text-center mb-6">
-                  <div className="flex items-center justify-center gap-2">
-                    <p className="text-lg text-muted-foreground line-through">$42.600</p>
-                    <span className="px-2 py-0.5 bg-destructive text-destructive-foreground text-xs font-bold rounded-md">73% OFF</span>
-                  </div>
-                  <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
-                    $11.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    <CreditCard className="w-4 h-4" />
-                    Hasta 3 cuotas sin interés de $3.799
-                  </span>
-                </div>
-
-                <CheckoutLink>
-                  <Button variant="default"
-                    size="lg"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light animate-[breathe_3s_ease-in-out_infinite]"
-                  >
-                    DESCARGA LOS PLANOS AHORA
-                  </Button>
-                </CheckoutLink>
-
-                <div className="flex justify-center mt-4">
-                  <img src="/Safepayment.png" alt="Métodos de pago seguros" className="h-28 object-contain" />
-                </div>
-
-                <div className="flex justify-center mt-3">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    🏦 Transferencia bancaria
-                  </span>
-                </div>
-
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  Compra segura - Acceso de por vida
-                </p>
-                <p className="text-center text-xs text-green-500 font-medium mt-2">
-                  Garantía de devolución de 7 días
-                </p>
-              </div>
+            {/* Viewers indicator */}
+            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-5">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </span>
+              <span>{viewers} personas viendo esta página</span>
             </div>
+
+            {/* Value perception items */}
+            <div className="space-y-2 mb-5">
+              {valueItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 bg-secondary rounded-xl px-4 py-3 border border-secondary-foreground/10"
+                >
+                  <span className="text-lg w-8 h-8 flex items-center justify-center bg-green-900 rounded-full shrink-0">
+                    {item.icon}
+                  </span>
+                  <span className="flex-1 text-sm font-medium text-secondary-foreground">{item.title}</span>
+                  <span className="text-sm font-semibold text-secondary-foreground/70 line-through">{item.price}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Valor real */}
+            <div className="text-center mb-4">
+              <span className="text-lg text-muted-foreground">Valor real </span>
+              <span className="text-2xl text-muted-foreground line-through font-bold">$37.500</span>
+            </div>
+
+            {/* Separator */}
+            <div className="border-t border-green-900 mb-4"></div>
+
+            {/* Green banner */}
+            <div className="flex justify-center mb-2">
+              <span className="inline-block bg-primary text-primary-foreground text-sm font-bold px-5 py-1.5 rounded-full tracking-wide">
+                LLEVALO HOY POR
+              </span>
+            </div>
+
+            {/* Final price */}
+            <div className="text-center mb-3">
+              <p className="text-5xl md:text-6xl font-bold text-primary inline-flex items-baseline gap-2">
+                $11.499 <span className="text-lg text-muted-foreground font-normal">ARS</span>
+              </p>
+            </div>
+
+            {/* Installments */}
+            <div className="flex items-center justify-center gap-2 mb-5">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <CreditCard className="w-4 h-4" />
+                Hasta 3 cuotas sin interés de $3.799
+              </span>
+            </div>
+
+            {/* CTA Button */}
+            <CheckoutLink>
+              <Button
+                variant="default"
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-300 transform hover:scale-105 text-xs leading-7 border-0 px-0 py-8 mx-0 my-0 tracking-tight font-light animate-[breathe_3s_ease-in-out_infinite]"
+              >
+                DESCARGAR AHORA
+              </Button>
+            </CheckoutLink>
+
+            {/* Payment / trust */}
+            <div className="flex justify-center mt-4">
+              <img src="/Safepayment.png" alt="Métodos de pago seguros" className="h-24 object-contain" />
+            </div>
+
+            <div className="flex justify-center mt-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                🏦 Transferencia bancaria ✅
+              </span>
+            </div>
+
+            <p className="text-center text-sm text-muted-foreground mt-3">
+              Compra segura - Acceso de por vida
+            </p>
+            <p className="text-center text-xs text-green-500 font-medium mt-2">
+              Garantía de devolución de 7 días
+            </p>
           </div>
         </div>
       </div>
