@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 
 const testimonios = [
+  { imagen: "/testi_melamina/testi1.jpg", alt: "Testimonio cliente - melamina" },
   { imagen: "/gallery/Testi 1.jpg", alt: "Testimonio cliente - mueble melamina" },
   { imagen: "/gallery/Testi 2.jpg", alt: "Testimonio cliente - placard" },
   { imagen: "/gallery/Testi 3.png", alt: "Testimonio cliente - bajo mesada" },
