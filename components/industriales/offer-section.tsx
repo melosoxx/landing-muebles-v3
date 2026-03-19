@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "@/components/checkout-link"
 import { CreditCard } from "lucide-react"
 
+const INDUSTRIALES_CHECKOUT_URL = "https://mueblesfactory.myshopify.com/cart/45719589454010:1"
+
 const valueItems = [
   { icon: "📦", title: "+300 Planos de Muebles Industriales", price: "$15.000" },
   { icon: "📐", title: "Guía de soldadura y técnicas profesionales", price: "$8.000" },
@@ -139,7 +141,7 @@ export function OfferSection() {
             </div>
 
             {/* CTA Button */}
-            <CheckoutLink>
+            <CheckoutLink checkoutUrl={INDUSTRIALES_CHECKOUT_URL}>
               <Button
                 variant="default"
                 size="lg"

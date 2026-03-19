@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { CheckoutLink } from "@/components/checkout-link"
 import { ArrowRight, Clock } from "lucide-react"
 
+const INDUSTRIALES_CHECKOUT_URL = "https://mueblesfactory.myshopify.com/cart/45719589454010:1"
+
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-secondary text-secondary-foreground overflow-hidden">
@@ -33,7 +35,7 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <CheckoutLink>
+            <CheckoutLink checkoutUrl={INDUSTRIALES_CHECKOUT_URL}>
               <Button
                 size="lg"
                 className="px-12 py-8 h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xs"
